@@ -479,6 +479,492 @@ h3::after {
 .footer-accent {
     text-align: center;
     padding: 60px 20px 40px;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Call for Chapter Proposals - Place-Based Syllabus</title>
+
+<style>
+
+:root {
+    --msu-maroon: #660000;
+    --msu-gold: #c8a95b;
+    --text-dark: #1a1a1a;
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--text-dark);
+    line-height: 1.8;
+    background: #0a0a0a;
+    overflow-x: hidden;
+}
+
+/* ===== ANIMATED GRADIENT BACKGROUND ===== */
+
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: 
+        linear-gradient(135deg, 
+            rgba(102, 0, 0, 0.9) 0%, 
+            rgba(40, 0, 20, 0.95) 50%, 
+            rgba(10, 10, 30, 0.95) 100%
+        );
+}
+
+.background-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=1600'),
+        radial-gradient(circle at 20% 50%, rgba(200, 169, 91, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(102, 0, 0, 0.2) 0%, transparent 50%);
+    background-size: cover, 800px 800px, 600px 600px;
+    background-position: center, 0% 50%, 100% 80%;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+    animation: backgroundShift 20s ease-in-out infinite;
+}
+
+@keyframes backgroundShift {
+    0%, 100% { 
+        background-position: center, 0% 50%, 100% 80%;
+        opacity: 0.4;
+    }
+    50% { 
+        background-position: center, 100% 50%, 0% 20%;
+        opacity: 0.3;
+    }
+}
+
+/* ===== HERO SECTION ===== */
+
+.hero {
+    position: relative;
+    padding: 100px 30px 80px;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(200, 169, 91, 0.1) 0%, transparent 70%);
+    animation: heroGlow 15s ease-in-out infinite;
+}
+
+@keyframes heroGlow {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-10%, -10%) scale(1.1); }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the new icon */
+}
+
+/* REPLACED LOGO STYLE WITH ICON STYLE */
+.hero-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 25px;
+    fill: var(--msu-gold);
+    filter: drop-shadow(0 0 25px rgba(200, 169, 91, 0.6));
+    animation: fadeInDown 1s ease-out;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.gold-divider {
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--msu-gold), transparent);
+    margin: 25px auto;
+    border-radius: 3px;
+    box-shadow: 0 0 20px rgba(200, 169, 91, 0.5);
+    animation: fadeIn 1.5s ease-out 0.3s both;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.hero h1 {
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 1.5s ease-out 0.5s both;
+}
+
+.hero h2 {
+    font-size: clamp(18px, 3vw, 24px);
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+    animation: fadeIn 1.5s ease-out 0.7s both;
+}
+
+/* ===== GLASS CARD ===== */
+
+.glass-wrapper {
+    max-width: 1000px;
+    margin: -40px auto 80px;
+    position: relative;
+    animation: fadeInUp 1s ease-out 0.8s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-radius: 24px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1) inset,
+        0 20px 60px rgba(102, 0, 0, 0.2);
+    padding: 60px 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 300px;
+    background: linear-gradient(180deg, rgba(200, 169, 91, 0.08) 0%, transparent 100%);
+    pointer-events: none;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+}
+
+.editor-info {
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 40px;
+    color: #555;
+    font-size: 17px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(102, 0, 0, 0.1);
+}
+
+.editor-info strong {
+    color: var(--msu-maroon);
+    font-weight: 600;
+}
+
+.intro-text {
+    font-size: 16px;
+    color: #333;
+    margin: 25px 0;
+    text-align: justify;
+}
+
+/* ===== SECTION HEADERS ===== */
+
+h3 {
+    color: var(--msu-maroon);
+    font-size: 26px;
+    font-weight: 700;
+    margin: 50px 0 30px;
+    padding-left: 20px;
+    border-left: 5px solid var(--msu-maroon);
+    position: relative;
+}
+
+h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 60px;
+    height: 2px;
+    background: var(--msu-gold);
+}
+
+/* ===== STRAND CARDS ===== */
+
+.strand-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(250, 250, 250, 0.8) 100%);
+    border-radius: 16px;
+    padding: 25px 30px;
+    margin: 20px 0;
+    border: 1px solid rgba(102, 0, 0, 0.08);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.strand-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--msu-maroon), var(--msu-gold));
+    transition: width 0.3s ease;
+}
+
+.strand-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 8px 25px rgba(102, 0, 0, 0.15);
+}
+
+.strand-card:hover::before {
+    width: 8px;
+}
+
+.strand-title {
+    font-weight: 700;
+    font-size: 19px;
+    color: var(--msu-maroon);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.strand-title::before {
+    content: '◆';
+    color: var(--msu-gold);
+    margin-right: 12px;
+    font-size: 14px;
+}
+
+.strand-description {
+    color: #444;
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+/* ===== SUBMISSION SECTION ===== */
+
+.submission-box {
+    background: linear-gradient(135deg, rgba(102, 0, 0, 0.05) 0%, rgba(200, 169, 91, 0.05) 100%);
+    border-radius: 20px;
+    padding: 35px;
+    margin: 40px 0;
+    border: 2px solid rgba(102, 0, 0, 0.1);
+}
+
+.submission-box h3 {
+    margin-top: 0;
+    border: none;
+    padding-left: 0;
+    text-align: center;
+}
+
+.submission-box h3::after {
+    display: none;
+}
+
+.submission-intro {
+    text-align: center;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
+.requirements-list {
+    list-style: none;
+    margin: 30px 0;
+    padding: 0;
+}
+
+.requirements-list li {
+    padding: 15px 20px 15px 50px;
+    margin: 12px 0;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 12px;
+    position: relative;
+    font-size: 15px;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.requirements-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--msu-gold);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.requirements-list li:hover {
+    background: rgba(255, 255, 255, 0.95);
+    transform: translateX(5px);
+}
+
+/* ===== EMAIL BUTTON ===== */
+
+.email-section {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.email-button {
+    display: inline-block;
+    padding: 20px 45px;
+    background: linear-gradient(135deg, var(--msu-maroon) 0%, #850000 100%);
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 50px;
+    box-shadow: 
+        0 10px 30px rgba(102, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.email-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.email-button:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 
+        0 15px 40px rgba(102, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+}
+
+.email-button:hover::before {
+    left: 100%;
+}
+
+.email-button:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+.email-alt {
+    margin-top: 20px;
+    font-size: 15px;
+    color: #666;
+}
+
+.email-alt strong {
+    color: var(--msu-maroon);
+    font-family: 'Courier New', monospace;
+}
+
+/* ===== TIMELINE ===== */
+
+.timeline-container {
+    background: linear-gradient(135deg, rgba(200, 169, 91, 0.08) 0%, rgba(102, 0, 0, 0.05) 100%);
+    border-radius: 20px;
+    padding: 35px 40px;
+    margin-top: 30px;
+    border-left: 5px solid var(--msu-gold);
+    position: relative;
+}
+
+.timeline-item {
+    display: flex;
+    align-items: flex-start;
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateX(10px);
+}
+
+.timeline-date {
+    font-weight: 700;
+    color: var(--msu-maroon);
+    min-width: 180px;
+    font-size: 15px;
+}
+
+.timeline-event {
+    color: #444;
+    font-size: 15px;
+    flex: 1;
+}
+
+/* ===== FOOTER ACCENT ===== */
+
+.footer-accent {
+    text-align: center;
+    padding: 60px 20px 40px;
     color: rgba(255, 255, 255, 0.6);
     font-size: 14px;
 }
@@ -554,9 +1040,10 @@ h3::after {
 
 <div class="hero">
     <div class="hero-content">
-        <img src="https://cdn01.its.msstate.edu/i/logos/msstate/HORIZONTAL_WEB_white_maroon_m.svg" 
-             alt="Mississippi State University Logo" 
-             class="logo">
+        <svg class="hero-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            <path d="M0 0h24v24H0z" fill="none"/>
+        </svg>
         
         <div class="gold-divider"></div>
         
@@ -635,6 +1122,89 @@ h3::after {
                     <li>Tentative chapter title</li>
                     <li>Potential strand</li>
                     <li>Authors' name, affiliation and a 50-75 biographical statement for each author</li>
+                </ul>
+
+                <div class="email-section">
+                    <a href="mailto:pedagogiesplace@gmail.com" class="email-button">
+                        Submit Proposal via Email
+                    </a>
+
+                    <div class="email-alt">
+                        Or email directly: <strong>pedagogiesplace@gmail.com</strong>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Tentative Timeline for Completion</h3>
+
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <span class="timeline-date">March 1, 2026:</span>
+                    <span class="timeline-event">Submissions of book chapter proposals</span>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-date">March 5, 2026:</span>
+                    <span class="timeline-event">Notification of acceptance</span>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-date">May 30, 2026:</span>
+                    <span class="timeline-event">Complete chapters are due</span>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-date">June 30, 2026:</span>
+                    <span class="timeline-event">Reviews returned to authors</span>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-date">August 30, 2026:</span>
+                    <span class="timeline-event">Revised chapters are due</span>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-date">October 2026:</span>
+                    <span class="timeline-event">Anticipated submission to the publisher</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="footer-accent">
+    Mississippi State University
+</div>
+
+</body>
+</html>
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+}
+
+.footer-accent::before {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--msu-gold), transparent);
+    margin: 0 auto 30px;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+    .glass-card {
+        padding: 40px 25px;
+        border-radius: 20px;
+    }
+    
+    .hero {
+        padding: 60px 20px 50px;
+    }
+    
+ach author</li>
                 </ul>
 
                 <div class="email-section">
