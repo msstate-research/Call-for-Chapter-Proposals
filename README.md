@@ -1,1 +1,1 @@
-# Call-for-Chapter-Proposals
+# Guidelines for Book Chapter Design website
