@@ -1,1 +1,1 @@
-# Guidelines for Book Chapter Design website
+# Guidelines for Book Chapter Design
