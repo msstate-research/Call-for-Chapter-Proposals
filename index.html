@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Designing Contextualized Multilingual Learning Experiences</title>
+
+<title>Author Guidelines | Designing Contextualized Multilingual Learning Experiences</title>
 
 <style>
 
@@ -11,8 +12,10 @@
     --msu-maroon: #660000;
     --msu-gold: #c8a95b;
     --text-dark: #1a1a1a;
-    --glass-bg: rgba(255, 255, 255, 0.85);
-    --glass-border: rgba(255, 255, 255, 0.3);
+    --text-muted: #555;
+    --glass-bg: rgba(255, 255, 255, 0.9);
+    --glass-border: rgba(255, 255, 255, 0.35);
+    --soft-card: rgba(255, 255, 255, 0.82);
 }
 
 * {
@@ -24,88 +27,78 @@
 body {
     font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
     color: var(--text-dark);
-    line-height: 1.8;
+    line-height: 1.75;
     background: #0a0a0a;
     overflow-x: hidden;
 }
 
-/* ===== ANIMATED GRADIENT BACKGROUND ===== */
+/* ===== BACKGROUND ===== */
 
 .background-container {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     z-index: -1;
-    background: 
-        linear-gradient(135deg, 
-            rgba(102, 0, 0, 0.9) 0%, 
-            rgba(40, 0, 20, 0.95) 50%, 
-            rgba(10, 10, 30, 0.95) 100%
+    background:
+        linear-gradient(135deg,
+            rgba(102, 0, 0, 0.92) 0%,
+            rgba(40, 0, 20, 0.96) 50%,
+            rgba(10, 10, 30, 0.96) 100%
         );
 }
 
 .background-container::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
+    inset: 0;
+    background-image:
         url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=1600'),
-        radial-gradient(circle at 20% 50%, rgba(200, 169, 91, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(102, 0, 0, 0.2) 0%, transparent 50%);
+        radial-gradient(circle at 20% 50%, rgba(200, 169, 91, 0.18) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(102, 0, 0, 0.25) 0%, transparent 50%);
     background-size: cover, 800px 800px, 600px 600px;
-    background-position: center, 0% 50%, 100% 80%;
+    background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.4;
-    animation: backgroundShift 20s ease-in-out infinite;
-}
-
-@keyframes backgroundShift {
-    0%, 100% { 
-        background-position: center, 0% 50%, 100% 80%;
-        opacity: 0.4;
-    }
-    50% { 
-        background-position: center, 100% 50%, 0% 20%;
-        opacity: 0.3;
-    }
+    opacity: 0.35;
 }
 
 /* ===== HERO SECTION ===== */
 
 .hero {
     position: relative;
-    padding: 100px 30px 80px;
+    padding: 90px 30px 70px;
     text-align: center;
     color: white;
     overflow: hidden;
 }
 
-.hero::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(200, 169, 91, 0.1) 0%, transparent 70%);
-    animation: heroGlow 15s ease-in-out infinite;
-}
-
-@keyframes heroGlow {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(-10%, -10%) scale(1.1); }
-}
-
 .hero-content {
     position: relative;
     z-index: 1;
-    max-width: 1000px;
+    max-width: 1050px;
     margin: 0 auto;
+}
+
+.hero-card {
+    display: inline-block;
+    max-width: 950px;
+    padding: 48px 55px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.30), 0 8px 25px rgba(102,0,0,.20);
+}
+
+.page-label {
+    display: inline-block;
+    margin-bottom: 22px;
+    padding: 8px 20px;
+    background: var(--msu-maroon);
+    color: white;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .gold-divider {
@@ -115,67 +108,72 @@ body {
     margin: 25px auto;
     border-radius: 3px;
     box-shadow: 0 0 20px rgba(200, 169, 91, 0.5);
-    animation: fadeIn 1.5s ease-out 0.3s both;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
 }
 
 .hero h1 {
-    font-size: clamp(28px, 5vw, 42px);
-    font-weight: 700;
-    letter-spacing: 0.5px;
+    color: var(--msu-maroon);
+    font-size: clamp(29px, 5vw, 46px);
+    font-weight: 800;
+    line-height: 1.18;
     margin-bottom: 20px;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    animation: fadeIn 1.5s ease-out 0.5s both;
 }
 
-/* ===== GLASS CARD ===== */
+.hero-subtitle {
+    color: #333;
+    font-size: 18px;
+    max-width: 800px;
+    margin: 0 auto 24px;
+}
+
+.series-note {
+    color: var(--text-muted);
+    font-size: 16px;
+    margin-bottom: 28px;
+}
+
+.series-note strong {
+    color: var(--msu-maroon);
+}
+
+.hero-button {
+    display: inline-block;
+    padding: 15px 32px;
+    background: var(--msu-maroon);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    transition: .3s;
+}
+
+.hero-button:hover {
+    background: var(--msu-gold);
+    color: #222;
+    transform: translateY(-2px);
+}
+
+/* ===== MAIN CARD ===== */
 
 .glass-wrapper {
-    max-width: 1000px;
-    margin: -40px auto 80px;
+    max-width: 1050px;
+    margin: -35px auto 80px;
+    padding: 0 24px;
     position: relative;
-    animation: fadeInUp 1s ease-out 0.8s both;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 .glass-card {
     background: var(--glass-bg);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border-radius: 24px;
+    border-radius: 26px;
     border: 1px solid var(--glass-border);
-    box-shadow: 
+    box-shadow:
         0 8px 32px rgba(0, 0, 0, 0.3),
         0 0 0 1px rgba(255, 255, 255, 0.1) inset,
         0 20px 60px rgba(102, 0, 0, 0.2);
-    padding: 60px 50px;
+    padding: 58px 52px;
     position: relative;
     overflow: hidden;
-}
-
-.glass-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 300px;
-    background: linear-gradient(180deg, rgba(200, 169, 91, 0.08) 0%, transparent 100%);
-    pointer-events: none;
 }
 
 .content {
@@ -183,222 +181,150 @@ body {
     z-index: 1;
 }
 
+/* ===== EDITOR INFO ===== */
+
 .editor-info {
     text-align: center;
-    margin-bottom: 40px;
-    color: #555;
+    margin-bottom: 42px;
+    color: var(--text-muted);
     font-size: 17px;
-    padding-bottom: 30px;
-    border-bottom: 1px solid rgba(102, 0, 0, 0.1);
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(102, 0, 0, 0.15);
+}
+
+.editor-info strong {
+    color: var(--msu-maroon);
 }
 
 .editor-info a {
     color: var(--msu-maroon);
     text-decoration: none;
+    font-weight: 700;
 }
 
 .editor-info a:hover {
     text-decoration: underline;
 }
 
-.intro-text {
-    font-size: 16px;
-    color: #333;
-    margin: 25px 0;
-    text-align: justify;
+/* ===== SECTION STYLING ===== */
+
+.section {
+    margin: 42px 0;
 }
 
-/* ===== SECTION HEADERS ===== */
+h2 {
+    color: var(--msu-maroon);
+    font-size: 27px;
+    font-weight: 800;
+    margin: 48px 0 24px;
+    padding-left: 18px;
+    border-left: 6px solid var(--msu-gold);
+    line-height: 1.3;
+}
 
 h3 {
     color: var(--msu-maroon);
-    font-size: 26px;
-    font-weight: 700;
-    margin: 50px 0 30px;
-    padding-left: 20px;
-    border-left: 5px solid var(--msu-maroon);
-    position: relative;
+    font-size: 20px;
+    font-weight: 750;
+    margin: 26px 0 12px;
 }
 
-h3::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -10px;
-    width: 60px;
-    height: 2px;
-    background: var(--msu-gold);
+p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 16px;
 }
 
-/* ===== STRAND CARDS ===== */
+ul, ol {
+    margin: 14px 0 14px 28px;
+}
 
-.strand-card {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(250, 250, 250, 0.8) 100%);
-    border-radius: 16px;
-    padding: 25px 30px;
-    margin: 20px 0;
-    border: 1px solid rgba(102, 0, 0, 0.08);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
+li {
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+a {
+    color: var(--msu-maroon);
+}
+
+.guideline-card {
+    background: var(--soft-card);
+    border-radius: 18px;
+    padding: 28px 30px;
+    margin: 24px 0;
+    border: 1px solid rgba(102, 0, 0, 0.10);
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
     position: relative;
     overflow: hidden;
 }
 
-.strand-card::before {
+.guideline-card::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 5px;
+    width: 6px;
     height: 100%;
     background: linear-gradient(180deg, var(--msu-maroon), var(--msu-gold));
-    transition: width 0.3s ease;
 }
 
-.strand-card:hover {
-    transform: translateX(5px);
-    box-shadow: 0 8px 25px rgba(102, 0, 0, 0.15);
+.warning-box {
+    background: rgba(102, 0, 0, 0.07);
+    border: 1px solid rgba(102, 0, 0, 0.15);
+    border-left: 6px solid var(--msu-maroon);
+    border-radius: 16px;
+    padding: 22px 25px;
+    margin: 24px 0;
 }
 
-.strand-card:hover::before {
-    width: 8px;
-}
-
-.strand-title {
-    font-weight: 700;
-    font-size: 19px;
+.warning-box strong {
     color: var(--msu-maroon);
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
 }
 
-.strand-title::before {
-    content: '◆';
-    color: var(--msu-gold);
-    margin-right: 12px;
-    font-size: 14px;
+.checklist {
+    list-style: none;
+    margin-left: 0;
 }
 
-.strand-description {
-    color: #444;
-    line-height: 1.7;
-    font-size: 15px;
-}
-
-/* ===== SUBMISSION SECTION ===== */
-
-.submission-box {
-    background: linear-gradient(135deg, rgba(102, 0, 0, 0.05) 0%, rgba(200, 169, 91, 0.05) 100%);
-    border-radius: 20px;
-    padding: 35px;
-    margin: 40px 0;
-    border: 2px solid rgba(102, 0, 0, 0.1);
-}
-
-.submission-box h3 {
-    margin-top: 0;
-    border: none;
-    padding-left: 0;
-    text-align: center;
-}
-
-.submission-box h3::after {
-    display: none;
-}
-
-.submission-intro {
-    text-align: center;
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 25px;
-}
-
-/* ===== EMAIL BUTTON ===== */
-
-.email-section {
-    text-align: center;
-    margin: 40px 0;
-}
-
-.email-button {
-    display: inline-block;
-    padding: 20px 45px;
-    background: linear-gradient(135deg, var(--msu-maroon) 0%, #850000 100%);
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    border-radius: 50px;
-    box-shadow: 
-        0 10px 30px rgba(102, 0, 0, 0.4),
-        0 0 0 1px rgba(255, 255, 255, 0.1) inset;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+.checklist li {
+    padding-left: 32px;
     position: relative;
-    overflow: hidden;
 }
 
-.email-button::before {
-    content: '';
+.checklist li::before {
+    content: '✔';
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s ease;
+    left: 0;
+    color: var(--msu-maroon);
+    font-weight: 800;
 }
 
-.email-button:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 
-        0 15px 40px rgba(102, 0, 0, 0.5),
-        0 0 0 1px rgba(255, 255, 255, 0.2) inset;
-}
-
-.email-button:hover::before {
-    left: 100%;
-}
-
-.email-button:active {
-    transform: translateY(-1px) scale(0.98);
-}
-
-.email-alt {
-    margin-top: 20px;
-    font-size: 15px;
-    color: #666;
-}
-
-/* ===== TIMELINE ===== */
+/* ===== DEADLINE TIMELINE ===== */
 
 .timeline-container {
-    background: linear-gradient(135deg, rgba(200, 169, 91, 0.08) 0%, rgba(102, 0, 0, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(200, 169, 91, 0.10) 0%, rgba(102, 0, 0, 0.06) 100%);
     border-radius: 20px;
-    padding: 35px 40px;
-    margin-top: 30px;
-    border-left: 5px solid var(--msu-gold);
-    position: relative;
+    padding: 34px 38px;
+    margin-top: 24px;
+    border-left: 6px solid var(--msu-gold);
 }
 
 .timeline-item {
     display: flex;
     align-items: flex-start;
-    margin: 20px 0;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.6);
+    margin: 18px 0;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.68);
     border-radius: 12px;
-    transition: all 0.3s ease;
-}
-
-.timeline-item:hover {
-    background: rgba(255, 255, 255, 0.9);
-    transform: translateX(10px);
 }
 
 .timeline-date {
     color: var(--msu-maroon);
-    min-width: 180px;
+    min-width: 210px;
     font-size: 15px;
+    font-weight: 800;
 }
 
 .timeline-event {
@@ -407,12 +333,52 @@ h3::after {
     flex: 1;
 }
 
-/* ===== FOOTER ACCENT ===== */
+/* ===== CONTACT BOX ===== */
+
+.contact-box {
+    background: linear-gradient(135deg, rgba(102, 0, 0, 0.95), rgba(55, 0, 30, 0.95));
+    color: white;
+    text-align: center;
+    border-radius: 24px;
+    padding: 38px 30px;
+    margin-top: 48px;
+}
+
+.contact-box h2 {
+    color: white;
+    border-left: none;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 14px;
+}
+
+.contact-box p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.email-button {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 16px 34px;
+    background: var(--msu-gold);
+    color: #1a1a1a;
+    text-decoration: none;
+    font-weight: 800;
+    border-radius: 999px;
+    transition: all 0.25s ease;
+}
+
+.email-button:hover {
+    background: #d8bd78;
+    transform: translateY(-2px);
+}
+
+/* ===== FOOTER ===== */
 
 .footer-accent {
     text-align: center;
     padding: 60px 20px 40px;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.68);
     font-size: 14px;
 }
 
@@ -428,26 +394,31 @@ h3::after {
 /* ===== RESPONSIVE ===== */
 
 @media (max-width: 768px) {
-    .glass-card {
-        padding: 40px 25px;
-        border-radius: 20px;
-    }
-    
     .hero {
         padding: 60px 20px 50px;
     }
-    
+
+    .hero-card {
+        padding: 36px 26px;
+        border-radius: 24px;
+    }
+
+    .glass-card {
+        padding: 38px 25px;
+        border-radius: 22px;
+    }
+
+    h2 {
+        font-size: 23px;
+    }
+
     .timeline-item {
         flex-direction: column;
     }
-    
+
     .timeline-date {
         min-width: auto;
-        margin-bottom: 8px;
-    }
-    
-    h3 {
-        font-size: 22px;
+        margin-bottom: 6px;
     }
 }
 
@@ -457,159 +428,270 @@ h3::after {
     body {
         background: white;
     }
-    
+
     .background-container {
         display: none;
     }
-    
+
+    .hero {
+        padding: 30px;
+    }
+
+    .hero-card,
     .glass-card {
         box-shadow: none;
         border: 1px solid #ddd;
         background: white;
     }
-    
-    .hero {
-        background: var(--msu-maroon);
-        padding: 30px;
-    }
-    
-    .email-button {
+
+    .contact-box {
         background: var(--msu-maroon);
     }
 }
 
-
-/* ===== HERO CARD ===== */
-.hero-card{
-display:inline-block;max-width:900px;padding:45px 55px;background:rgba(255,255,255,.94);
-backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:30px;
-box-shadow:0 20px 60px rgba(0,0,0,.30),0 8px 25px rgba(102,0,0,.20);}
-.hero-card h1{color:#660000;text-shadow:none;margin-bottom:30px;}
-.hero-button{display:inline-block;padding:16px 34px;background:#660000;color:#fff;text-decoration:none;
-border-radius:50px;font-weight:600;transition:.3s;}
-.hero-button:hover{background:#c8a95b;color:#222;transform:translateY(-2px);}
-
 </style>
-
 </head>
+
 <body>
 
 <div class="background-container"></div>
 
-<div class="hero">
-<div class="hero-content">
-<div class="hero-card">
-<div class="gold-divider"></div>
-<h1>Designing Contextualized Multilingual Learning Experiences: Place, Practice, and Pedagogy</h1>
-<a href="https://www.emerald.com/books/collection/375992/Research-in-Second-Language-Learning" class="hero-button" target="_blank">View Emerald Book Series</a>
-<div class="gold-divider"></div>
-</div>
-</div>
-</div>
+<header class="hero">
+    <div class="hero-content">
+        <div class="hero-card">
+            <div class="page-label">Author Guidelines</div>
 
-<div class="glass-wrapper">
+            <div class="gold-divider"></div>
+
+            <h1>Designing Contextualized Multilingual Learning Experiences: Place, Practice, and Pedagogy</h1>
+
+            <p class="hero-subtitle">
+                Guidelines for chapter authors contributing to the edited volume.
+            </p>
+
+            <p class="series-note">
+                <strong>Under contract with Emerald Publishing</strong><br>
+                <a href="https://www.emerald.com/books/collection/375992/Research-in-Second-Language-Learning" target="_blank">
+                    Research in Second Language Learning Series
+                </a>
+            </p>
+
+            <a href="https://www.emerald.com/books/collection/375992/Research-in-Second-Language-Learning" class="hero-button" target="_blank">
+                View Emerald Book Series
+            </a>
+
+            <div class="gold-divider"></div>
+        </div>
+    </div>
+</header>
+
+<main class="glass-wrapper">
     <div class="glass-card">
         <div class="content">
-            
+
             <p class="editor-info">
-                Editor: Dr. Lourdes Cardozo-Gaibisso, Mississippi State University<br>
-                Under contract with Emerald Publishing<br>
-                Research in Second Language Learning Series
+                <strong>Editor:</strong> Lourdes Cardozo Gaibisso, Mississippi State University<br>
+                <strong>Contact:</strong>
+                <a href="mailto:placepedagogies@gmail.com">placepedagogies@gmail.com</a>
             </p>
 
-            <p class="intro-text">
-                This edited volume features chapters exploring how place-based pedagogy can transform second language curriculum design. Rather than treating learners’ immediate environments as incidental backdrops, it positions them as central pedagogical resources encompassing neighborhoods, workplaces, community organizations, heritage sites, digital communities, and translocal networks.
-            </p>
+            <section class="section">
+                <h2>Guidelines for Chapters</h2>
 
-            <h3>Strands</h3>
+                <div class="guideline-card">
+                    <h3>1. Chapter Length</h3>
+                    <p>
+                        Your chapter should be up to <strong>7,000 words</strong>, or about
+                        <strong>28 double-spaced pages</strong>, including references, figures, and tables.
+                        References will appear after each chapter, as opposed to at the end of the book.
+                    </p>
+                </div>
 
-            <p>
-                We invite submissions of empirical studies, theoretical analyses, practice-focused reports, and design cases, that clarify principled frameworks and pragmatic implementations of place-based experiences in second-language learning aligned with one of the following strands:
-            </p>
+                <div class="guideline-card">
+                    <h3>2. Chapter Format and Expectations</h3>
 
-            <div class="strand-card">
-                <div class="strand-title">Foundations of place-based curriculum design</div>
-                <p class="strand-description">
-                    Theoretical and conceptual chapters that define place-based constructs for second language learning, traces historical and philosophical roots, or synthesizes literature to build a coherent framework for second language learning syllabi grounded in a pedagogy of place.
-                </p>
-            </div>
+                    <ol type="a">
+                        <li>Use double spacing, Times New Roman 12-point font, 1-inch margins on all sides, and left alignment.</li>
+                        <li>Keep a close eye on your allotted manuscript word length as you write.</li>
+                        <li>Limit the number of tables and figures to a maximum of 3 per chapter, if necessary. If you use pictures, save them as JPEG files at a minimum of 300 dpi.</li>
+                        <li>Use U.S. American punctuation, spelling, and grammar.</li>
+                        <li>
+                            Use APA style, 7th edition, for citations and references. For information about APA style, see
+                            <a href="https://owl.purdue.edu/owl/research_and_citation/apa_style/apa_formatting_and_style_guide/index.html" target="_blank">
+                                Purdue OWL’s APA Formatting and Style Guide
+                            </a>.
+                        </li>
+                        <li>Obtain permission for all materials borrowed from outside sources.</li>
+                        <li><strong>DO NOT</strong> use screenshots or low-quality graphics.</li>
+                        <li>Limit the use of jargon and avoid a style that is overly academic.</li>
+                    </ol>
 
-            <div class="strand-card">
-                <div class="strand-title">Mapping local assets and networks for second language learning</div>
-                <p class="strand-description">
-                    Methodological and design-oriented chapters that describe tools and processes for identifying local linguistic, cultural, institutional, and digital assets; show how to translate asset maps into learning outcomes, scaffolded units, task sequences, and materials; and/or present templates for curriculum mapping and partnership development.
-                </p>
-            </div>
-
-            <div class="strand-card">
-                <div class="strand-title">Assessment systems that reflect local relevance and global standards</div>
-                <p class="strand-description">
-                    Chapters that address formative and summative assessment strategies aligned with place-based goals, including performance-based assessment, authentic assessment rubrics, portfolio approaches, and ways to balance locally meaningful outcomes with institutional or credentialing standards.
-                </p>
-            </div>
-
-            <div class="strand-card">
-                <div class="strand-title">Translocal exchanges and diasporic partnerships for second language learning</div>
-                <p class="strand-description">
-                    Studies and case reports on collaborations across local (e.g., schools, diaspora communities, virtual exchanges) that leverage translocal connections to expand learners' linguistic repertoires, intercultural competence, and civic engagement, with attention to ethics, reciprocity, and sustainability.
-                </p>
-            </div>
-
-            <div class="strand-card">
-                <div class="strand-title">Media, storytelling, and place-based materials</div>
-                <p class="strand-description">
-                    Chapters focusing on multimodal materials design (digital storytelling, community archiving, mobile ethnography, AR/VR place-based resources) and how media practice can mediate language learning, identity work, and community voice while addressing access and issues of representation.
-                </p>
-            </div>
-
-            <div class="submission-box">
-                <h3>Submission information</h3>
-                <p class="submission-intro">
-                    E-mail the editor by July 31 if you are interested in submitting a chapter.
-                </p>
-                
-                <div class="email-section">
-                    <a href="mailto:placepedagogies@gmail.com" class="email-button">
-                        Email the editor
-                    </a>
-                    
-                    <div class="email-alt">
-                        placepedagogies@gmail.com
+                    <div class="warning-box">
+                        <p>
+                            <strong>Important:</strong> Chapters not following these expectations will be sent back to authors.
+                        </p>
                     </div>
                 </div>
-            </div>
 
-            <h3>Tentative timeline for completion</h3>
+                <div class="guideline-card">
+                    <h3>3. Audience</h3>
+                    <p>
+                        The intended audience includes teacher educators and professional learning facilitators,
+                        in-service teachers, including those in graduate programs, school and teacher leaders,
+                        graduate students, and researchers interested in place-based education and multilingual pedagogy.
+                    </p>
 
-            <div class="timeline-container">
-                <div class="timeline-item">
-                    <span class="timeline-date">September 30, 2026:</span>
-                    <span class="timeline-event">Complete chapters are due</span>
+                    <p>
+                        This edited volume is intended for an international audience of educators and researchers.
+                    </p>
                 </div>
 
-                <div class="timeline-item">
-                    <span class="timeline-date">October 30, 2026:</span>
-                    <span class="timeline-event">Reviews returned to authors</span>
+                <div class="guideline-card">
+                    <h3>4. Use of AI</h3>
+                    <p>
+                        Emerald Publishing’s stance on AI tools and authorship can be viewed through Emerald’s
+                        relevant guidance, and their Generative AI usage key principles should also be reviewed.
+                    </p>
+
+                    <p>
+                        The use of AI is not permitted for copywriting, reporting, or the submission and publication
+                        of images created or edited by AI tools. Please ensure the manuscript follows these guidelines.
+                    </p>
                 </div>
 
-                <div class="timeline-item">
-                    <span class="timeline-date">January 30, 2027:</span>
-                    <span class="timeline-event">Revised chapters are due</span>
+                <div class="guideline-card">
+                    <h3>5. Chapter Structure</h3>
+                    <p>
+                        The structure for each chapter should include the following sections:
+                    </p>
+
+                    <ul>
+                        <li>Introduction/context</li>
+                        <li>Theoretical/conceptual framework</li>
+                        <li>Research methods</li>
+                        <li>Findings</li>
+                        <li>Practice</li>
+                        <li>Conclusion/implications</li>
+                    </ul>
+
+                    <p>
+                        Chapters that are conceptual or practice-focused rather than empirical may combine or omit
+                        the methods and findings sections as appropriate.
+                    </p>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Submission Deadlines</h2>
+
+                <div class="timeline-container">
+                    <div class="timeline-item">
+                        <span class="timeline-date">October 15, 2026</span>
+                        <span class="timeline-event">Complete chapters are due.</span>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">November 30, 2026</span>
+                        <span class="timeline-event">Reviews returned to authors.</span>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">January 30, 2027</span>
+                        <span class="timeline-event">Revised chapters are due.</span>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-date">February 2027</span>
+                        <span class="timeline-event">Submission to publisher.</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Additional Author Guidelines</h2>
+
+                <div class="guideline-card">
+                    <ul>
+                        <li>Number the pages of each chapter from 1 within each file.</li>
+                        <li>Add a line between paragraphs and avoid indents at the start of a paragraph.</li>
+                        <li>Do not use hyphenation to break words across a line, except in words where a hyphen is grammatically required.</li>
+                        <li>
+                            Keep file names short and simple to avoid confusion and errors transferring and saving.
+                            File names should have a maximum character count of 30 characters, not including the file extension.
+                            Suggested format: <strong>AuthorLastName_Chapter</strong>
+                        </li>
+                        <li>Please do not use special characters in any file names.</li>
+                        <li>Please supply any diagrams or figures in black and white/monochrome.</li>
+                        <li>Please provide high-resolution images suitable for use in the finished book, with a minimum resolution of 300 dpi.</li>
+                        <li>
+                            Please supply images in separate picture files, preferably in .jpg format.
+                            Label images and figures clearly with a number and caption.
+                            For example: <strong>Figure 2: Multilingual Learner Enrollment Trends, 2023–2026</strong>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Submission Guidelines</h2>
+
+                <div class="guideline-card">
+                    <p>
+                        Submit the following as separate files:
+                    </p>
+
+                    <ul class="checklist">
+                        <li>
+                            <strong>Chapter Draft:</strong> about 28 double-spaced pages total and no more than 7,000 words.
+                        </li>
+                        <li>
+                            <strong>Figures:</strong> each figure should be submitted in a separate file in its original format.
+                            Add a callout in the chapter for each figure, such as <strong>INSERT FIGURE 1 HERE</strong>.
+                        </li>
+                    </ul>
+
+                    <p>
+                        To streamline the process, please upload your file to the folder in the shared Google Drive
+                        labeled with your name. Do not email the chapter. Simply notify the editor once your chapter
+                        has been uploaded.
+                    </p>
                 </div>
 
-                <div class="timeline-item">
-                    <span class="timeline-date">February 2027:</span>
-                    <span class="timeline-event">Submission to publisher</span>
+                <div class="warning-box">
+                    <p>
+                        <strong>Note:</strong> Acceptance of a chapter proposal or positive review does not guarantee
+                        acceptance of the final chapter. Authors of accepted proposals must submit a draft manuscript
+                        by the deadline; each submission will be carefully reviewed. The editor and publisher, guided
+                        by peer-review recommendations, reserve the right to decline publication if the completed
+                        chapter does not meet the publisher’s academic standards.
+                    </p>
                 </div>
-            </div>
+            </section>
+
+            <section class="contact-box">
+                <h2>Questions?</h2>
+
+                <p>
+                    Please contact the editor if you have any questions about these guidelines or need further information.
+                </p>
+
+                <a href="mailto:placepedagogies@gmail.com" class="email-button">
+                    Email the Editor
+                </a>
+
+                <p style="margin-top: 16px;">
+                    placepedagogies@gmail.com
+                </p>
+            </section>
 
         </div>
     </div>
-</div>
+</main>
 
-<div class="footer-accent">
-    Mississippi State University
-</div>
+<footer class="footer-accent">
+    Designing Contextualized Multilingual Learning Experiences: Place, Practice, and Pedagogy<br>
+    Under contract with Emerald Publishing | Research in Second Language Learning Series
+</footer>
 
 </body>
 </html>
