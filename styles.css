@@ -13,25 +13,52 @@
   --shadow: 0 24px 55px rgba(0, 0, 0, 0.28);
 }
 
-* {
+/* =========================
+   Base styles
+   ========================= */
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  min-height: 100vh;
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
   background:
-    radial-gradient(circle at top left, rgba(96, 165, 250, 0.22), transparent 32rem),
+    radial-gradient(
+      circle at top left,
+      rgba(96, 165, 250, 0.22),
+      transparent 32rem
+    ),
     var(--bg);
   color: var(--text);
 }
+
+/* =========================
+   Hero section
+   ========================= */
 
 .hero {
   max-width: 1200px;
   margin: 0 auto;
   padding: 48px 20px 28px;
   display: grid;
-  grid-template-columns: 1fr 320px;
+  grid-template-columns: minmax(0, 1fr) 320px;
   gap: 24px;
   align-items: end;
 }
@@ -45,20 +72,25 @@ body {
 }
 
 h1 {
+  margin: 0;
   font-size: clamp(2.6rem, 7vw, 5rem);
   line-height: 0.9;
-  margin: 0;
 }
 
 .subtitle {
-  color: var(--muted);
   max-width: 720px;
+  color: var(--muted);
   font-size: 1.1rem;
+  line-height: 1.6;
 }
 
 .hero-card,
 .panel {
-  background: linear-gradient(145deg, rgba(30, 41, 59, 0.96), rgba(15, 23, 42, 0.94));
+  background: linear-gradient(
+    145deg,
+    rgba(30, 41, 59, 0.96),
+    rgba(15, 23, 42, 0.94)
+  );
   border: 1px solid var(--border);
   border-radius: 24px;
   box-shadow: var(--shadow);
@@ -70,31 +102,36 @@ h1 {
 
 .hero-card span,
 .cards span {
-  color: var(--muted);
   display: block;
+  color: var(--muted);
   font-size: 0.9rem;
 }
 
 .hero-card strong {
   display: block;
-  font-size: 2.3rem;
   margin: 8px 0;
+  font-size: 2.3rem;
 }
 
 .hero-card small {
   color: var(--muted);
 }
 
+/* =========================
+   Main layout
+   ========================= */
+
 .layout {
   max-width: 1200px;
   margin: 0 auto 40px;
   padding: 0 20px;
   display: grid;
-  grid-template-columns: 430px 1fr;
+  grid-template-columns: 430px minmax(0, 1fr);
   gap: 20px;
 }
 
 .panel {
+  min-width: 0;
   padding: 22px;
 }
 
@@ -111,26 +148,34 @@ h3 {
   color: var(--muted);
 }
 
+/* =========================
+   Forms and controls
+   ========================= */
+
 .input-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
   margin: 18px 0 24px;
 }
 
 label {
-  color: var(--muted);
-  font-size: 0.86rem;
   display: grid;
   gap: 6px;
+  min-width: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
 }
 
 input,
 select,
 button {
-  border-radius: 14px;
-  border: 1px solid var(--border);
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
   padding: 11px 12px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
   font: inherit;
 }
 
@@ -144,12 +189,24 @@ input[type="number"] {
   border-color: rgba(96, 165, 250, 0.55);
 }
 
+input:focus,
+select:focus,
+button:focus-visible {
+  outline: 3px solid rgba(56, 189, 248, 0.32);
+  outline-offset: 2px;
+}
+
 button {
+  width: auto;
   cursor: pointer;
   border: none;
-  font-weight: 800;
   color: #07111f;
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  font-weight: 800;
+}
+
+button:hover {
+  filter: brightness(1.08);
 }
 
 button.secondary {
@@ -166,67 +223,93 @@ button.danger {
 
 .button-row {
   display: flex;
-  gap: 12px;
   flex-wrap: wrap;
+  gap: 12px;
   margin-top: 12px;
 }
 
+/* =========================
+   Summary cards
+   ========================= */
+
 .cards {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
 
 .cards article {
+  min-width: 0;
+  padding: 16px;
   background: rgba(148, 163, 184, 0.09);
   border: 1px solid var(--border);
-  padding: 16px;
   border-radius: 18px;
 }
 
 .cards strong {
   display: block;
-  font-size: 1.35rem;
   margin-top: 6px;
+  font-size: 1.35rem;
+  overflow-wrap: anywhere;
 }
 
+/* =========================
+   Chart
+   ========================= */
+
 .chart-box {
+  width: 100%;
+  min-width: 0;
   margin-top: 18px;
+  padding: 16px;
+  overflow: hidden;
   background: rgba(15, 23, 42, 0.45);
   border: 1px solid var(--border);
   border-radius: 20px;
-  padding: 16px;
 }
 
 canvas {
-  width: 100%;
-  height: auto;
   display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
 }
+
+/* =========================
+   Monthly inputs
+   ========================= */
 
 .month-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 12px;
 }
 
 .month-grid label {
-  background: rgba(148, 163, 184, 0.08);
+  min-width: 0;
   padding: 12px;
+  background: rgba(148, 163, 184, 0.08);
   border-radius: 16px;
 }
 
+/* =========================
+   Tables
+   ========================= */
+
 .table-wrap {
+  width: 100%;
+  margin-top: 16px;
   overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
   border: 1px solid var(--border);
   border-radius: 18px;
-  margin-top: 16px;
 }
 
 table {
   width: 100%;
-  border-collapse: collapse;
   min-width: 880px;
+  border-collapse: collapse;
 }
 
 th,
@@ -239,11 +322,19 @@ td {
 
 th {
   color: #bfdbfe;
+  background: rgba(96, 165, 250, 0.08);
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  background: rgba(96, 165, 250, 0.08);
 }
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* =========================
+   Status colors
+   ========================= */
 
 .status-good {
   color: var(--green);
@@ -260,11 +351,30 @@ th {
   font-weight: 800;
 }
 
+/* =========================
+   Transaction form
+   ========================= */
+
 .transaction-form {
   display: grid;
-  grid-template-columns: 150px 170px 130px 130px 1fr 110px;
+  grid-template-columns:
+    minmax(120px, 150px)
+    minmax(140px, 170px)
+    minmax(110px, 130px)
+    minmax(110px, 130px)
+    minmax(180px, 1fr)
+    minmax(100px, 110px);
   gap: 10px;
+  align-items: end;
 }
+
+.transaction-form button {
+  width: 100%;
+}
+
+/* =========================
+   Footer
+   ========================= */
 
 footer {
   max-width: 1200px;
@@ -273,22 +383,125 @@ footer {
   color: var(--muted);
 }
 
+/* =========================
+   Tablets and smaller laptops
+   ========================= */
+
 @media (max-width: 980px) {
-  .hero,
+  .hero {
+    grid-template-columns: 1fr;
+    align-items: start;
+    padding-top: 36px;
+  }
+
+  .hero-card {
+    width: 100%;
+  }
+
   .layout {
     grid-template-columns: 1fr;
   }
 
+  .wide {
+    grid-column: auto;
+  }
+
   .month-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .transaction-form {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
+/* =========================
+   Standard tablets
+   ========================= */
+
+@media (max-width: 768px) {
+  .hero {
+    gap: 18px;
+    padding: 30px 16px 20px;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+    line-height: 0.95;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .layout {
+    padding: 0 16px;
+    gap: 16px;
+  }
+
+  .panel,
+  .hero-card {
+    border-radius: 20px;
+  }
+
+  .input-grid {
+    gap: 12px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .chart-box {
+    padding: 12px;
+  }
+
+  th,
+  td {
+    padding: 10px 12px;
+  }
+
+  footer {
+    padding: 16px 16px 32px;
+  }
+}
+
+/* =========================
+   Phones
+   ========================= */
+
 @media (max-width: 600px) {
+  body {
+    background:
+      radial-gradient(
+        circle at top left,
+        rgba(96, 165, 250, 0.18),
+        transparent 22rem
+      ),
+      var(--bg);
+  }
+
+  .hero {
+    padding-top: 24px;
+  }
+
+  .eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+  }
+
+  h1 {
+    font-size: clamp(2.25rem, 14vw, 3.4rem);
+  }
+
+  h2 {
+    font-size: 1.35rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+
   .input-grid,
   .cards,
   .month-grid,
@@ -296,8 +509,129 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  .panel {
+  .panel,
+  .hero-card {
     padding: 16px;
     border-radius: 18px;
+  }
+
+  .hero-card strong {
+    font-size: 1.9rem;
+  }
+
+  .cards strong {
+    font-size: 1.2rem;
+  }
+
+  input,
+  select,
+  button {
+    min-height: 46px;
+    font-size: 1rem;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .button-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .month-grid label {
+    padding: 10px 12px;
+  }
+
+  .table-wrap {
+    margin-right: -4px;
+    margin-left: -4px;
+    border-radius: 14px;
+  }
+
+  table {
+    min-width: 760px;
+  }
+
+  th,
+  td {
+    font-size: 0.85rem;
+  }
+}
+
+/* =========================
+   Small phones
+   ========================= */
+
+@media (max-width: 420px) {
+  .hero,
+  .layout,
+  footer {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .hero {
+    padding-top: 20px;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 15vw, 2.8rem);
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+  }
+
+  .panel,
+  .hero-card {
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .chart-box {
+    padding: 8px;
+    border-radius: 14px;
+  }
+
+  label {
+    font-size: 0.82rem;
+  }
+
+  input,
+  select,
+  button {
+    padding: 10px;
+  }
+}
+
+/* =========================
+   Touchscreen improvements
+   ========================= */
+
+@media (hover: none) and (pointer: coarse) {
+  button,
+  input,
+  select {
+    min-height: 48px;
+  }
+
+  button:active {
+    transform: scale(0.98);
+  }
+}
+
+/* =========================
+   Reduced-motion accessibility
+   ========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
